@@ -1,0 +1,34 @@
+# terraform
+-- create infrastructure (modularized) - creates vpc, subnet, gke, gke node pool, jump server (to access private gke)
+---- go to privategke folder (modules - network, k8s, vm)
+
+     cd privategke
+
+---- open terraform.tfvars and update the variables google project, region, zone, vcp, subent, gke info, jumpserver
+
+     vi terraform.tfvars
+
+
+---- Run the following commands
+
+     terraform init
+     terraform validate
+     terraform plan
+     terraform apply -auto-approve
+
+# resources will be created in the gcp project
+
+# helm chart
+-- chart created for helloapp
+
+cd helloapp-chart
+vi values.yaml
+-- update values.yaml with the image from the repo
+
+helm lint .
+helm template .
+cd
+helm install app helloapp-chart
+helm upgrade app helloapp-chart
+
+# creates the deployment, service and ingress using the values.yaml values

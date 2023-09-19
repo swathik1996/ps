@@ -2,29 +2,29 @@ Deploy a secure micro-service in GKE as per below:
 
 Requirements: 
 1. All infrastructure provisioning should be automated using terraform  (complete)
-    a. Local/remote terraform state can be used 
-    b. Use custom VPC 
-    c. GKE cluster should not be public [1] 
-2. Micro-Service should be deployed and managed using helm-charts (complete)
-3. Micro-Service should be exposed via ingress (public / private) (complete)
+    a. Local/remote terraform state can be used (remote)
+    b. Use custom VPC (created)
+    c. GKE cluster should not be public [1] (private cluster created)
+2. Micro-Service should be deployed and managed using helm-charts (complete using helm chart)
+3. Micro-Service should be exposed via ingress (public / private) (exposed using ingress as part of helm chart)
 4. Micro-service should be accessible using a DNS (http or https) (not complete - as i need to buy a domain)
 5. Add unit test cases for Terraform code using Terragrunt (not complete)
 6. Create an external data source (use Python script) to create below firewall rules with GKE provisioning: (completed using Terraform)
     a. Allow egress from nodes to GKE master 
     b. Allow all communication between nodes and pods 
-7. Setup health checks for micro-services (not added as the microservice does not support it)
+7. Setup health checks for micro-services (not added as the helloapp microservice does not support readiness and liveness probe)
 8. You can use sample application images available at [2] or create your own (used helloapp)
 9. Document caveats/limitations if any Bonus points (not mandatory) 
-    · Securing micro-service using HTTPS (no)
+    · Securing micro-service using HTTPS (no, used http)
     · Using remote terraform state (yes)
-    · Define restrictive network policies for micro-service namespace - default deny ingress and egress (will add)
+    · Define restrictive network policies for micro-service namespace - default deny ingress and egress (added)
     · Automated DNS records creation for the Service/Ingress (no)
     · Automated Certificate provisioning for the Service/Ingress (no)
-    · Setup monitoring using stack driver (automatic)
-    · Istio setup Guidelines (will add)
+    · Setup monitoring using stack driver (automatically setup)
+    · Istio setup Guidelines (not yet)
     · You can use GCP Free Trial accounts for this exercise (used)
-    · GKE autopilot clusters are not allowed (ok)
-    · Version control code in GitHub (will add)
+    · GKE autopilot clusters are not allowed (ok used standard)
+    · Version control code in GitHub (added)
     · README with step-by-step instructions to recreate the same from any local machine (not yet)
     · Clean and Readable Code (yes)
     · Code Reusability (yes)

@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: psdemo-network-policy
+  namespace: default
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: helloapp-chart
+      app.kubernetes.io/instance: release-name
+  policyTypes:
+    - Ingress
+  ingress:
+    - from:
+        - ipBlock:
+            cidr: 10.11.0.0/21
+        - podSelector:
+            matchLabels:
+              app.kubernetes.io/name: helloapp-chart
+              app.kubernetes.io/instance: release-name
+      ports:
+        - protocol: TCP
+          port: 8080
