@@ -1,0 +1,6 @@
+helm create helloapp-chart
+helm lint .
+helm template .
+helm install app helloapp-chart
+helm upgrade app helloapp-chart
+
